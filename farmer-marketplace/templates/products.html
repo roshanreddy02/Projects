@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Available Products</h1>
+    </header>
+    <main>
+        <table>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Farmer</th>
+                <th>Order</th>
+            </tr>
+            {% for product in products %}
+            <tr>
+                <td>{{ product['Name'] }}</td>
+                <td>{{ product['Price'] }}</td>
+                <td>{{ product['Quantity'] }}</td>
+                <td>{{ product['Farmer'] }}</td>
+                <td>
+                    <form action="/order" method="POST">
+                        <input type="hidden" name="product_name" value="{{ product['Name'] }}">
+                        <input type="text" name="consumer_name" placeholder="Your Name" required>
+                        <input type="number" name="quantity" placeholder="Quantity" required>
+                        <button type="submit">Order</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </main>
+</body>
+</html>

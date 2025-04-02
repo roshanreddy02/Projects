@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmers</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>List of Farmers</h1>
+    </header>
+    <main>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Product</th>
+            </tr>
+            {% for farmer in farmers %}
+            <tr>
+                <td>{{ farmer['Name'] }}</td>
+                <td>{{ farmer['Location'] }}</td>
+                <td>{{ farmer['Product'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </main>
+</body>
+</html>
